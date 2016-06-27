@@ -153,7 +153,7 @@ defmodule Scrivener do
     stripped_query = query
     |> exclude(:order_by)
     |> exclude(:preload)
-    |> exclude(:select)
+    #|> exclude(:select)
 
     {query_sql, parameters} =  Ecto.Adapters.SQL.to_sql(:all, repo, stripped_query)
     {:ok, %{num_rows: 1, rows: [[count]]}} = Ecto.Adapters.SQL.query(repo, "SELECT count(*) FROM (#{query_sql}) AS temp", parameters)
